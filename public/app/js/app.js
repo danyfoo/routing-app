@@ -1,35 +1,78 @@
 /**
  * Created by darivera on 3/21/2016.
  */
-angular.module('routerApp', ['routerRoutes'])
+var routerApp = angular.module('routerApp', ['ui.router']);
 
-//create the controllers
-//This will be the controller for the ENTIRE site
-.controller('mainController', function(){
+routerApp.config(function($stateProvider, $urlRouterProvider){
     "use strict";
-    var vm = this;
 
-    //create a bigMessage variable to display in our view
-    vm.bigMesagge = 'A smooth sea never made a skilled sailor.';
-})
+    $urlRouterProvider.otherwise('/home');
 
-//home page specific controller
-.controller('homeController', function(){
+    $stateProvider
+
+        //HOME STATES AND NESTED VIEWS
+        .state('home', {
+            url: '/home',
+            templateUrl: 'views/pages/home.html'
+        })
+
+        //HOME STATES AND NESTED VIEWS
+        .state('home.list', {
+            url: '/list',
+            templateUrl: 'views/pages/home-list.html',
+            controller: function($scope){
+                $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
+            }
+        })
+
+        //HOME STATES AND NESTED VIEWS
+        .state('home.paragraph', {
+            url: '/paragraph',
+            template: 'I could sure use a drink right now.'
+        })
+
+        //HOME STATES AND NESTED VIEWS
+        .state('about', {
+            url: '/about',
+            views:{
+                //The main template will be placed here (relatively named)
+                '': { templateUrl: '/views/pages/about.html'},
+
+                //The child views will be defined here (absolutely named)
+                'columnOne@about': { template: 'Look I am a column!' },
+
+                //The child views will be defined here (absolutely named)
+                'columnTwo@about': {
+                    templateUrl: '/views/pages/table-data.html',
+                    controller: 'scotchController'
+                }
+            }
+        })
+
+        //HOME STATES AND NESTED VIEWS
+        .state('contact', {
+            url: '/contact',
+            templateUrl: 'views/pages/contact.html'
+        });
+}); //Closes $routerApp.config()
+
+routerApp.controller('scotchController', function($scope){
     "use strict";
-    var vm = this;
-    vm.message = 'This is the homepage!';
-})
 
-//about page controller
-.controller('aboutController', function(){
-    "use strict";
-    var vm = this;
-    vm.message = 'Look! I am an about page.';
-})
+    $scope.message = 'test';
 
-// contact page controller
-.controller('contactController', function(){
-    "use strict";
-    var vm = this;
-    vm.message = 'Contact us! JK. This is just a demo.';
+    $scope.scotches = [
+        {
+            name: 'Macallan 12',
+            price: 50
+        },
+        {
+            name: 'Chivas Regal Royal Salute',
+            price: 10000
+        },
+        {
+            name: 'Glenfiddich 1937',
+            price: 20000
+        },
+    ];
 });

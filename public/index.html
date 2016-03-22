@@ -12,44 +12,41 @@
     <link rel="stylesheet" href="app/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <style>
-        body { padding-top: 50px; }
+        .navbar { border-radius: 0; }
     </style>
 
     <!-- JS -->
     <!-- load angular and angular-route -->
     <script src="app/js/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
 
     <!-- load our custom angular app files -->
     <script src="app/js/app.js"></script>
     <script src="app/js/app.routes.js"></script>
 
 </head>
-<body class="container" ng-app="routerApp" ng-controller="mainController as main">
+<body class="container" ng-app="routerApp" role="navigation">
     <!-- HEADER NAVBAR -->
-    <header>
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Angular Routing Example</a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-                <li><a href="/about"><i class="fa fa-shield"></i> About</a></li>
-                <li><a href="/contact"><i class="fa fa-comment"></i> Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div class="jumbotron">
-            <h1>{{ main.bigMesagge }}</h1>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="#">Angular Routing Example</a>
         </div>
+
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="about"></i>About</a></li>
+            <li><a ui-sref="contact"></i>Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN CONTENT-->
+    <div class="container">
         <!-- Angular templating will go there -->
         <!-- This is where content will be injected -->
 
-        <div ng-view></div>
+        <div ui-view></div>
 
-    </main>
+    </div>
 </body>
 
 </html>
