@@ -11,14 +11,14 @@
     <!-- Load Bootstrap and our stylesheet -->
     <link rel="stylesheet" href="app/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <style>
-        body { padding-top: 50px; }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- JS -->
     <!-- load angular and angular-route -->
     <script src="app/js/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 
     <!-- load our custom angular app files -->
     <script src="app/js/app.js"></script>
@@ -40,16 +40,14 @@
         </nav>
     </header>
 
-    <main>
         <div class="jumbotron">
             <h1>{{ main.bigMesagge }}</h1>
         </div>
         <!-- Angular templating will go there -->
         <!-- This is where content will be injected -->
-
-        <div ng-view></div>
-
-    </main>
+        <div id="content-views">
+            <div ng-view></div>
+        </div>
 </body>
 
 </html>
