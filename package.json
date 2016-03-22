@@ -1,0 +1,16 @@
+{
+  "name": "routing-app",
+  "version": "1.0.0",
+  "description": "Example application of node-app with angularjs integration",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Daniel Rivera",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "express": "^4.13.4"
+  }
+}
